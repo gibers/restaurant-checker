@@ -1,0 +1,31 @@
+
+spring:
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydatabase
+    username: myuser
+    password: mypassword
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate  # "none", "validate", "update", "create" ou "create-drop"
+    show-sql: true  # Affiche les requ�tes SQL g�n�r�es dans la console
+    properties:
+      hibernate.format_sql: true  # Formatage lisible pour les requ�tes SQL
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+
+logging:
+  level:
+    root: INFO
+    com.mordoc.restaurantchecker.selenium: DEBUG
+    com.mordoc.restaurantchecker.selenium.ScrollToBottom: INFO
+    com.mordoc.restaurantchecker.selenium.SeekForDetail: INFO
+
+
+test:
+  personal:
+    test1: ${custom.test1}
+    test2: test2Value
+
+
