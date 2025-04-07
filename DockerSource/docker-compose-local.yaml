@@ -1,0 +1,32 @@
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres_restaurant-checker
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  resto:
+    build:
+      context: ../.
+      dockerfile: DockerSource/Dockerfile
+      args:
+        JAR_FILE: restaurant-checker-0.0.1-SNAPSHOT.jar
+    image: resto-i2
+    container_name: resto-app
+    ports:
+      - "8080:8080"
+    command: ["java", "-jar", "app.jar", "--spring.profiles.active=local", "--url.datasource=postgres", "--custom.test1=Émilie", "--test.personal.test2=Émilio"]
+    depends_on:
+      - postgres
+
+
+volumes:
+  postgres_data:
+
