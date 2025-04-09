@@ -15,7 +15,7 @@ services:
   resto:
     build:
       context: ../.
-      dockerfile: DockerSource/Dockerfile
+      dockerfile: DockerSource/Dockerfile-old
       args:
         JAR_FILE: restaurant-checker-0.0.1-SNAPSHOT.jar
     image: resto-i2
